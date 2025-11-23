@@ -22,9 +22,36 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Distributed NestJS Microservices with RabbitMQ, PostgreSQL, and Latency Measurement
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project demonstrates a distributed microservices architecture built with NestJS, featuring two independent modules/services that communicate asynchronously via RabbitMQ.
+The project simulates a real-world scenario where one service processes cryptocurrency data and another service evaluates latency across multiple service calls.
+
+🚀 Architecture Overview
+
+The system consists of two independent NestJS services:
+
+1. Wallet Service
+
+Receives a JSON file containing cryptocurrency information.
+
+Parses and persists the data into a PostgreSQL database.
+
+Exposes multiple RPC handlers to respond to requests coming from the Caller service.
+
+Connected to RabbitMQ for asynchronous communication.
+
+2. Caller Service
+
+Randomly sends requests to three different RPC endpoints in the Wallet service.
+
+Measures and records latency for each call.
+
+Useful for benchmarking message queue performance and microservice responsiveness.
+
+📨 Communication Layer: RabbitMQ
+
+All communication between Wallet and Caller is handled via RabbitMQ using NestJS microservice transporters.
 
 ## Project setup
 
